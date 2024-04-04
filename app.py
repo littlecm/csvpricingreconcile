@@ -1,6 +1,6 @@
 import streamlit as st
-import pandas as pd
 import requests
+import pandas as pd
 from io import StringIO  # Import StringIO from the io module
 
 def download_csv(url):
@@ -12,9 +12,9 @@ def download_csv(url):
 
 def read_csv_with_encoding(content, encoding='utf-8'):
     try:
-        return pd.read_csv(pd.compat.StringIO(content.decode(encoding)))
+        return pd.read_csv(StringIO(content.decode(encoding)))  # Use StringIO from the io module
     except UnicodeDecodeError:
-        return pd.read_csv(pd.compat.StringIO(content.decode('ISO-8859-1')))
+        return pd.read_csv(StringIO(content.decode('ISO-8859-1')))  # Use StringIO from the io module
 
 def reconcile_prices(vinsolutions_data, other_data, vinsolutions_type_field, other_type_field, vinsolutions_new_price_field, vinsolutions_used_price_field, other_new_price_field, other_used_price_field):
     price_discrepancies = []
