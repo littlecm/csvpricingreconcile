@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-from io import StringIO  # Add this import at the beginning of your file
+from io import StringIO  # Import StringIO from the io module
 
 def download_csv(url):
     response = requests.get(url)
